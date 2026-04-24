@@ -1,46 +1,42 @@
-// Defina aqui as datas futuras dos seus objetivos
-const datasObjetivos = [
-    new Date("2025-12-31T23:59:59"),
-    new Date("2025-11-10T08:00:00"),
-    new Date("2025-09-01T00:00:00"),
-    new Date("2026-01-20T23:59:59")
+const tempos = [
+    new Date("2026-12-18T00:00:00"), // Colégio
+    new Date("2026-12-13T00:00:00"), // ENEM
+    new Date("2026-12-19T00:00:00")  // Currículo
 ];
 
-function atualizarContadores() {
-    const agora = new Date();
+function calculaTempo(tempoObjetivo) {
+    let tempoAtual = new Date();
+    let tempoFinal = tempoObjetivo - tempoAtual;
 
-    for (let i = 0; i < datasObjetivos.length; i++) {
-        const tempoRestante = datasObjetivos[i] - agora;
+    if (tempoFinal > 0) {
+        let segundos = Math.floor(tempoFinal / 1000);
+        let minutos = Math.floor(segundos / 60);
+        let horas = Math.floor(minutos / 60);
+        let dias = Math.floor(horas / 24);
 
-        // IDs dos elementos HTML
-        const elDias = document.getElementById(`dias${i}`);
-        const elHoras = document.getElementById(`horas${i}`);
-        const elMin = document.getElementById(`min${i}`);
-        const elSeg = document.getElementById(`seg${i}`);
+        segundos %= 60;
+        minutos %= 60;
+        horas %= 24;
 
-        if (tempoRestante > 0) {
-            // Cálculos matemáticos corrigidos
-            const segundos = Math.floor((tempoRestante / 1000) % 60);
-            const minutos = Math.floor((tempoRestante / (1000 * 60)) % 60);
-            const horas = Math.floor((tempoRestante / (1000 * 60 * 60)) % 24);
-            const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
-
-            elDias.textContent = dias;
-            elHoras.textContent = horas;
-            elMin.textContent = minutos;
-            elSeg.textContent = segundos;
-        } else {
-            // Se o tempo acabou
-            elDias.textContent = "0";
-            elHoras.textContent = "0";
-            elMin.textContent = "0";
-            elSeg.textContent = "0";
-        }
+        return [dias, horas, minutos, segundos];
+    } else {
+        return [0, 0, 0, 0];
     }
 }
 
-// Executa a função imediatamente ao carregar
-atualizarContadores();
+function atualizaCronometro() {
+    for (let i = 0; i < tempos.length; i++) {
+        let resultado = calculaTempo(tempos[i]);
+        document.getElementById(`dias${i}`).textContent = resultado[0];
+        document.getElementById(`horas${i}`).textContent = resultado[1];
+        document.getElementById(`min${i}`).textContent = resultado[2];
+        document.getElementById(`seg${i}`).textContent = resultado[3];
+    }
+}
 
-// Atualiza a cada 1 segundo
-setInterval(atualizarContadores, 1000);
+function comecaCronometro() {
+    atualizaCronometro();
+    setInterval(atualizaCronometro, 1000);
+}
+
+comecaCronometro();
