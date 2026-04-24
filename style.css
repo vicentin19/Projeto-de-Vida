@@ -1,89 +1,65 @@
-/* Configurações Globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    margin: 0;
 }
 
-body {
-    background-color: #121214;
-    color: #FFFFFF;
+.objetivos-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
+    gap: 20px;
 }
 
-/* Container das Abas */
 .aba-conteudo {
-    display: none; /* Esconde por padrão */
-    background: #1e1e26;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
     text-align: center;
-    width: 100%;
-    max-width: 500px;
-    border: 1px solid #323238;
+    width: 350px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
 }
 
-/* Mostra apenas a aba que tiver a classe 'ativo' */
-.aba-conteudo.ativo {
-    display: block;
-    animation: fadeIn 0.5s ease;
+.titulo-principal {
+    margin: 0 0 20px 0;
+    color: #00ff88;
+    font-size: 1.4rem;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.aba-conteudo-titulo-principal {
-    font-size: 1.8rem;
-    color: #00b37e; /* Verde estilo Alura/Tech */
-    margin-bottom: 10px;
-}
-
-.aba-conteudo-titulo-secundario {
-    font-size: 1rem;
-    color: #8d8d99;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-}
-
-/* Grid do Contador */
 .contador {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
 .contador-digito {
-    background: #29292e;
-    padding: 15px 5px;
-    border-radius: 12px;
-    border-bottom: 4px solid #00b37e;
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 65px;
+    transition: transform 0.2s;
 }
 
-.contador-digito-numero {
-    font-size: 2rem;
+.contador-digito:hover {
+    transform: scale(1.05);
+    background: #333;
+}
+
+.numero {
+    font-size: 26px;
     font-weight: bold;
-    display: block;
+    margin: 0;
+    color: #fff;
 }
 
-.contador-digito-texto {
-    font-size: 0.75rem;
-    color: #a8a8b3;
-    margin-top: 5px;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 400px) {
-    .contador {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.legenda {
+    font-size: 11px;
+    margin: 0;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
