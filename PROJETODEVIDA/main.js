@@ -1,16 +1,14 @@
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
 
-// TROCAR ABAS
+// TROCA DE ABAS
 tabs.forEach((tab, i) => {
   tab.addEventListener("click", () => {
-
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
 
     tab.classList.add("active");
     contents[i].classList.add("active");
-
   });
 });
 
@@ -23,8 +21,8 @@ const datas = [
 ];
 
 // CRIAR TIMER
-function criarTimer(container) {
-  container.innerHTML = `
+function criarTimer(el) {
+  el.innerHTML = `
     <div><b>0</b><span>dias</span></div>
     <div><b>0</b><span>horas</span></div>
     <div><b>0</b><span>min</span></div>
@@ -32,7 +30,7 @@ function criarTimer(container) {
   `;
 }
 
-// CALCULAR TEMPO
+// CALCULAR
 function calcular(data) {
   const diff = data - new Date();
 
@@ -45,17 +43,16 @@ function calcular(data) {
   m %= 60;
   h %= 24;
 
-  return diff > 0 ? [d, h, m, s] : [0,0,0,0];
+  return diff > 0 ? [d,h,m,s] : [0,0,0,0];
 }
 
 // ATUALIZAR
 function atualizar() {
   document.querySelectorAll(".timer").forEach((el, i) => {
 
-    if (!el.hasChildNodes()) criarTimer(el);
+    if (!el.innerHTML) criarTimer(el);
 
     const [d,h,m,s] = calcular(datas[i]);
-
     const nums = el.querySelectorAll("b");
 
     nums[0].textContent = d;
