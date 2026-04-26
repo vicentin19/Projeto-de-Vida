@@ -1,29 +1,52 @@
-const navItems = document.querySelectorAll(".nav-item");
-const cards = document.querySelectorAll(".card");
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".content");
+const bgs = document.querySelectorAll(".bg");
+const indicator = document.querySelector(".indicator");
 
-// TROCA DE TELAS
-navItems.forEach((item, i) => {
-  item.addEventListener("click", () => {
+// INDICADOR ANIMADO
+function moveIndicator(el) {
+  indicator.style.width = el.offsetWidth + "px";
+  indicator.style.left = el.offsetLeft + "px";
+}
 
-    navItems.forEach(n => n.classList.remove("active"));
-    cards.forEach(c => c.classList.remove("active"));
+// inicial
+moveIndicator(document.querySelector(".tab.active"));
 
-    item.classList.add("active");
-    cards[i].classList.add("active");
+// troca
+tabs.forEach((tab, i) => {
+  tab.addEventListener("click", () => {
+
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+    bgs.forEach(b => b.classList.remove("active"));
+
+    tab.classList.add("active");
+
+    moveIndicator(tab);
+
+    setTimeout(() => {
+      contents[i].classList.add("active");
+      bgs[i].classList.add("active");
+    }, 150);
 
   });
 });
 
+// RESPONSIVO (corrige posição ao redimensionar)
+window.addEventListener("resize", () => {
+  moveIndicator(document.querySelector(".tab.active"));
+});
+
 // DATAS
 const datas = [
-  new Date("2026-12-31"),
-  new Date("2026-10-01"),
-  new Date("2026-08-01"),
-  new Date("2026-06-01")
+  new Date("2026-06-11"),
+  new Date("2026-11-08"),
+  new Date("2026-11-28"),
+  new Date("2026-12-18")
 ];
 
-// CRIAR TIMER
-function criarTimer(el) {
+// TIMER
+function criar(el){
   el.innerHTML = `
     <div><b>0</b><span>dias</span></div>
     <div><b>0</b><span>horas</span></div>
@@ -32,38 +55,32 @@ function criarTimer(el) {
   `;
 }
 
-// CALCULAR TEMPO
-function calcular(data) {
-  const diff = data - new Date();
+function calc(d){
+  const diff = d - new Date();
 
-  let s = Math.floor(diff / 1000);
-  let m = Math.floor(s / 60);
-  let h = Math.floor(m / 60);
-  let d = Math.floor(h / 24);
+  let s = Math.floor(diff/1000);
+  let m = Math.floor(s/60);
+  let h = Math.floor(m/60);
+  let dias = Math.floor(h/24);
 
-  s %= 60;
-  m %= 60;
-  h %= 24;
+  s%=60; m%=60; h%=24;
 
-  return diff > 0 ? [d,h,m,s] : [0,0,0,0];
+  return diff>0?[dias,h,m,s]:[0,0,0,0];
 }
 
-// ATUALIZAR
-function atualizar() {
-  document.querySelectorAll(".timer").forEach((el, i) => {
+function update(){
+  document.querySelectorAll(".timer").forEach((el,i)=>{
+    if(!el.innerHTML) criar(el);
 
-    if (!el.innerHTML) criarTimer(el);
+    const [d,h,m,s]=calc(datas[i]);
+    const n=el.querySelectorAll("b");
 
-    const [d,h,m,s] = calcular(datas[i]);
-    const nums = el.querySelectorAll("b");
-
-    nums[0].textContent = d;
-    nums[1].textContent = h;
-    nums[2].textContent = m;
-    nums[3].textContent = s;
-
+    n[0].textContent=d;
+    n[1].textContent=h;
+    n[2].textContent=m;
+    n[3].textContent=s;
   });
 }
 
-setInterval(atualizar, 1000);
-atualizar();
+setInterval(update,1000);
+update();

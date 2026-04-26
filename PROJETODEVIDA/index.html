@@ -3,61 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goals Experience</title>
+  <title>Objetivos 2026</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="layout">
+<main class="app">
 
-    <!-- LADO ESQUERDO -->
-    <aside class="sidebar">
-      <h1>Goals</h1>
+  <h1>Meus Objetivos</h1>
 
-      <nav>
-        <button class="nav-item active">Cursos</button>
-        <button class="nav-item">Projetos</button>
-        <button class="nav-item">Portfólio</button>
-        <button class="nav-item">Carreira</button>
-      </nav>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active">Copa do Mundo</button>
+    <button class="tab">Vestibulares</button>
+    <button class="tab">Final da Libertadores</button>
+    <button class="tab">Se formar</button>
 
-      <footer>
-        <p>2026 Vision</p>
-      </footer>
-    </aside>
+    <div class="indicator"></div>
+  </div>
 
-    <!-- LADO DIREITO -->
-    <section class="content">
+  <!-- VIEWER -->
+  <section class="viewer">
 
-      <div class="card active">
-        <h2>Estudar 4 cursos</h2>
-        <p>tempo restante</p>
-        <div class="timer" data-i="0"></div>
-      </div>
+    <div class="bg active" style="--img:url('https://i.pinimg.com/736x/a6/1e/8d/a61e8df0f01a2f45d2edfba64388ddb0.jpg')"></div>
+    <div class="bg" style="--img:url('https://i.pinimg.com/736x/2a/0d/64/2a0d64f2f41f056657ba3c5477b33705.jpg')"></div>
+    <div class="bg" style="--img:url('https://i.pinimg.com/1200x/21/9f/ff/219fffe3c11670db671e123721da5362.jpg')"></div>
+    <div class="bg" style="--img:url('https://i.pinimg.com/1200x/d3/2b/51/d32b512ec279907bdb91032697ec735c.jpg')"></div>
 
-      <div class="card">
-        <h2>5 projetos JavaScript</h2>
-        <p>tempo restante</p>
-        <div class="timer" data-i="1"></div>
-      </div>
+    <div class="overlay"></div>
 
-      <div class="card">
-        <h2>Criar portfólio</h2>
-        <p>tempo restante</p>
-        <div class="timer" data-i="2"></div>
-      </div>
+    <div class="content active">
+      <h2>Início da Copa do Mundo</h2>
+      <div class="timer" data-i="0"></div>
+    </div>
 
-      <div class="card">
-        <h2>Atualizar currículo</h2>
-        <p>tempo restante</p>
-        <div class="timer" data-i="3"></div>
-      </div>
+    <div class="content">
+      <h2>Fazer o ENEM</h2>
+      <div class="timer" data-i="1"></div>
+    </div>
 
-    </section>
+    <div class="content">
+      <h2>Ver o Flamengo na final da Libertadores</h2>
+      <div class="timer" data-i="2"></div>
+    </div>
 
-  </main>
+    <div class="content">
+      <h2>Se formar na escola</h2>
+      <div class="timer" data-i="3"></div>
+    </div>
 
-  <script src="main.js"></script>
+  </section>
+
+</main>
+
+<script src="main.js"></script>
 </body>
 </html>
