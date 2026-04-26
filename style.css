@@ -1,54 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CORES */
+:root {
+  --bg: #0f172a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --borda: rgba(255, 255, 255, 0.1);
+  --azul: #38bdf8;
+  --roxo: #8b5cf6;
+  --texto: #e2e8f0;
+}
+
+/* BODY */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ff0000;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    margin: 0;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--texto);
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
-.objetivos-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 90%;
-    max-width: 500px;
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: 1000px;
 }
 
-.aba-conteudo {
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    border: 1px solid #333;
+/* HEADER */
+.header h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-.titulo-principal {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    color: #00ff88;
+.header span {
+  color: var(--azul);
 }
 
-.contador {
-    display: flex;
-    justify-content: space-around;
+/* TABS */
+.tabs {
+  background: var(--glass);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  overflow: hidden;
 }
 
-.contador-digito {
-    display: flex;
-    flex-direction: column;
+/* BOTÕES */
+.tab-buttons {
+  display: flex;
 }
 
-.numero {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 0;
+.tab {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.legenda {
-    font-size: 0.7rem;
-    margin: 0;
-    color: #aaa;
+.tab:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.tab.active {
+  color: white;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+}
+
+/* CONTEÚDO */
+.tab-content {
+  display: none;
+  padding: 40px;
+  text-align: center;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.tab-content p {
+  color: var(--azul);
+  margin-bottom: 30px;
+}
+
+/* TIMER */
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 40px;
+}
+
+.timer div {
+  text-align: center;
+}
+
+.timer span {
+  display: block;
+  font-size: 14px;
+  color: var(--azul);
 }
