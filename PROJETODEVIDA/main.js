@@ -1,14 +1,16 @@
-const tabs = document.querySelectorAll(".tab");
-const contents = document.querySelectorAll(".tab-content");
+const navItems = document.querySelectorAll(".nav-item");
+const cards = document.querySelectorAll(".card");
 
-// TROCA DE ABAS
-tabs.forEach((tab, i) => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
+// TROCA DE TELAS
+navItems.forEach((item, i) => {
+  item.addEventListener("click", () => {
 
-    tab.classList.add("active");
-    contents[i].classList.add("active");
+    navItems.forEach(n => n.classList.remove("active"));
+    cards.forEach(c => c.classList.remove("active"));
+
+    item.classList.add("active");
+    cards[i].classList.add("active");
+
   });
 });
 
@@ -30,7 +32,7 @@ function criarTimer(el) {
   `;
 }
 
-// CALCULAR
+// CALCULAR TEMPO
 function calcular(data) {
   const diff = data - new Date();
 

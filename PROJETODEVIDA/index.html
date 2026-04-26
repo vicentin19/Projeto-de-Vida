@@ -3,48 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goals Dashboard</title>
+  <title>Goals Experience</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="app">
+  <main class="layout">
 
-    <header class="header">
-      <h1>Goals <span>Dashboard</span></h1>
-    </header>
+    <!-- LADO ESQUERDO -->
+    <aside class="sidebar">
+      <h1>Goals</h1>
 
-    <section class="tabs">
+      <nav>
+        <button class="nav-item active">Cursos</button>
+        <button class="nav-item">Projetos</button>
+        <button class="nav-item">Portfólio</button>
+        <button class="nav-item">Carreira</button>
+      </nav>
 
-      <div class="tabs-buttons">
-        <button class="tab active">Cursos</button>
-        <button class="tab">Projetos</button>
-        <button class="tab">Portfólio</button>
-        <button class="tab">Carreira</button>
-      </div>
+      <footer>
+        <p>2026 Vision</p>
+      </footer>
+    </aside>
 
-      <div class="tab-content active">
+    <!-- LADO DIREITO -->
+    <section class="content">
+
+      <div class="card active">
         <h2>Estudar 4 cursos</h2>
-        <p>Tempo restante</p>
+        <p>tempo restante</p>
         <div class="timer" data-i="0"></div>
       </div>
 
-      <div class="tab-content">
+      <div class="card">
         <h2>5 projetos JavaScript</h2>
-        <p>Tempo restante</p>
+        <p>tempo restante</p>
         <div class="timer" data-i="1"></div>
       </div>
 
-      <div class="tab-content">
-        <h2>Construir portfólio</h2>
-        <p>Tempo restante</p>
+      <div class="card">
+        <h2>Criar portfólio</h2>
+        <p>tempo restante</p>
         <div class="timer" data-i="2"></div>
       </div>
 
-      <div class="tab-content">
+      <div class="card">
         <h2>Atualizar currículo</h2>
-        <p>Tempo restante</p>
+        <p>tempo restante</p>
         <div class="timer" data-i="3"></div>
       </div>
 
